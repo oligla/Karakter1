@@ -1,5 +1,26 @@
-﻿Console.Write("Indtast score (0-100): ");
-int score = int.Parse(Console.ReadLine());
+﻿int score;
+
+while (true)
+{
+    Console.Write("Indtast din score (0-100): ");
+    string scoreInputBruger = Console.ReadLine();
+
+    if (int.TryParse(scoreInputBruger, out score))
+    {
+        if (score >= 0 && score <= 100)
+        {
+            break;
+        }
+        else
+        {
+            Console.WriteLine("Den indtastede score skal være mellem 0 og 100.");
+        }
+    }
+    else
+    {
+        Console.WriteLine("Det er ikke et tal, skriv venligst kun heltal.");
+    }
+}
 
 if (score > 89)
 {
@@ -31,4 +52,3 @@ else
     Console.WriteLine("Din karakter er -3");
 }
    
- 
