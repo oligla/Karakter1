@@ -1,4 +1,9 @@
-﻿int score;
+﻿using System.ComponentModel.Design;
+using System.Data;
+
+int score;
+int karakter;
+
 
 while (true)
 {
@@ -7,14 +12,17 @@ while (true)
 
     if (int.TryParse(scoreInputBruger, out score))
     {
-        if (score >= 0 && score <= 100)
+        if (ErGyldigScore(score))
         {
+            karakter = BeregnKarakter(score);
+            Console.WriteLine($"Din karakter er: {karakter}");
             break;
         }
         else
         {
-            Console.WriteLine("Den indtastede score skal være mellem 0 og 100.");
+            Console.WriteLine("Den indtastede score skal være mellem 0-100");
         }
+
     }
     else
     {
@@ -22,33 +30,49 @@ while (true)
     }
 }
 
-if (score > 89)
-{
-    Console.WriteLine("Din karakter er 12");
-}
-else if (score > 79)
-{
 
-    Console.WriteLine("Din karakter er 10");
-}
-else if (score > 64)
-{
-    Console.WriteLine("Din karakter er 7");
-}
-else if (score > 49)
-{
-    Console.WriteLine("Din karakter er 4");
-}
-else if (score > 24)
-{
-    Console.WriteLine("Din karakter er 02");
-}
-else if (score > 9)
-{
-    Console.WriteLine("Din karakter er 00");
-}
-else
-{
-    Console.WriteLine("Din karakter er -3");
-}
-   
+
+
+    static int BeregnKarakter(int score)
+    {
+        if (score > 89)
+        {
+            return 12;
+        }
+        else if (score > 79)
+        {
+            return 10;
+        }
+        else if (score > 64)
+        {
+            return 7;
+        }
+        else if (score > 49)
+        {
+            return 4;
+        }
+        else if (score > 24)
+        {
+            return 02;
+        }
+        else if (score > 9)
+        {
+            return 00;
+        }
+        else
+        {
+            return -3;
+        }
+    }
+
+    static bool ErGyldigScore(int score)
+    {
+        if (score >= 0 && score <= 100)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
